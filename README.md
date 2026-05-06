@@ -17,3 +17,7 @@ git clone https://github.com/YOUR_USERNAME/amitcomp.git
 cd amitcomp
 
 bash install.sh
+
+## Anytime you want to open AmitCompressor just run this command
+```bash
+amitcomp
