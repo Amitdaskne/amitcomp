@@ -1,6 +1,6 @@
 # 
 # AmitCompressor VYO v1.0   
-#
+# 
 
 Professional Video Compressor for Termux
 
@@ -17,8 +17,44 @@ git clone https://github.com/YOUR_USERNAME/amitcomp.git
 cd amitcomp
 
 bash install.sh
+```
 
-## Anytime you want to open AmitCompressor just run this command
+---
+
+## Anytime You Want To Open AmitCompressor
 
 ```bash
 amitcomp
+```
+
+---
+
+## Direct Python Run
+
+```bash
+python amitcomp.py
+```
+
+---
+
+## Uninstall
+
+```bash
+bash uninstall.sh
+```
+
+---
+
+## Features
+
+- Fast Compression
+- FFmpeg Based
+- Beautiful CLI UI
+- Progress Bar
+- Low / Medium / High Compression
+
+---
+
+## Author
+
+Amit Das
