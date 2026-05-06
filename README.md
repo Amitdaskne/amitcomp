@@ -19,5 +19,6 @@ cd amitcomp
 bash install.sh
 
 ## Anytime you want to open AmitCompressor just run this command
+
 ```bash
 amitcomp
