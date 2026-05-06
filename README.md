@@ -1,6 +1,6 @@
-# ╭──────────────────────────────╮
-# │  AmitCompressor VYO v1.0   │
-# ╰──────────────────────────────╯
+# 
+# AmitCompressor VYO v1.0   
+#
 
 Professional Video Compressor for Termux
 
