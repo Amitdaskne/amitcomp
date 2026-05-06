@@ -1,13 +1,13 @@
-╭────────────────────────────────────╮
-│  AmitCompressor VYO v1.0         │
-╰────────────────────────────────────╯
+╭──────────────────────────────────╮
+│AmitCompressor VYO v1.0                 │
+╰──────────────────────────────────╯
 
 INSTALL:
 
 pkg update -y
 pkg install git -y
 
-git clone https://github.com/YOUR_USERNAME/amitcomp.git
+git clone https://github.com/amitdaskne/amitcomp.git
 
 cd amitcomp
 
