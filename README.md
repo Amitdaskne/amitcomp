@@ -12,7 +12,7 @@ Professional Video Compressor for Termux
 pkg update -y
 pkg install git -y
 
-git clone https://github.com/YOUR_USERNAME/amitcomp.git
+git clone https://github.com/amitdaskne/amitcomp.git
 
 cd amitcomp
 
