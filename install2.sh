@@ -27,31 +27,84 @@ draw_bar() {
     echo -ne "\r ${CYAN}│${RESET} ${BLUE}${bar}${RESET} ${WHITE}${percent}%${RESET}"
 }
 
-echo -e "${CYAN}╭──────────────────────────────────────────────╮${RESET}"
-echo -e "${CYAN}│${RESET}  ${BOLD}${WHITE} AmitCompressor Installer v1.0${RESET}      ${CYAN}│${RESET}"
-echo -e "${CYAN}╰──────────────────────────────────────────────╯${RESET}"
+header() {
+    echo -e "${CYAN}╭──────────────────────────────────────────────╮${RESET}"
+    echo -e "${CYAN}│${RESET}  ${BOLD}${WHITE} AmitCompressor Installer v1.0${RESET}      ${CYAN}│${RESET}"
+    echo -e "${CYAN}╰──────────────────────────────────────────────╯${RESET}"
+}
+
+header
 
 echo ""
 echo -e " ${BLUE}➤${RESET} ${BOLD}Preparing Installation...${RESET}"
-sleep 1
 
-# Fake Smooth Progress Animation
 for i in {1..100}
 do
     draw_bar $i
-    sleep 0.03
+    sleep 0.02
 done
 
 echo ""
 echo ""
 
-echo -e " ${BLUE}➤${RESET} ${BOLD}Installing Required Packages...${RESET}"
+# UPDATE PACKAGES
+echo -e " ${BLUE}➤${RESET} ${BOLD}Updating Packages...${RESET}"
 
-pkg update -y > /dev/null 2>&1
-pkg install python ffmpeg -y > /dev/null 2>&1
+pkg update -y > /dev/null 2>&1 &
+PID=$!
+
+progress=0
+
+while kill -0 $PID 2>/dev/null
+do
+    if [ $progress -lt 95 ]; then
+        progress=$((progress + 1))
+    fi
+
+    draw_bar $progress
+    sleep 0.2
+done
+
+wait $PID
+
+draw_bar 100
 
 echo ""
+echo ""
+
+# INSTALL DEPENDENCIES
+echo -e " ${BLUE}➤${RESET} ${BOLD}Installing Required Packages...${RESET}"
+
+pkg install python ffmpeg -y > /dev/null 2>&1 &
+PID=$!
+
+progress=0
+
+while kill -0 $PID 2>/dev/null
+do
+    if [ $progress -lt 95 ]; then
+        progress=$((progress + 1))
+    fi
+
+    draw_bar $progress
+    sleep 0.2
+done
+
+wait $PID
+
+draw_bar 100
+
+echo ""
+echo ""
+
+# CONFIGURE
 echo -e " ${BLUE}➤${RESET} ${BOLD}Configuring AmitCompressor...${RESET}"
+
+for i in {1..100}
+do
+    draw_bar $i
+    sleep 0.01
+done
 
 chmod +x amitcomp.py
 
@@ -60,24 +113,18 @@ cp amitcomp.py $PREFIX/bin/amitcomp
 chmod +x $PREFIX/bin/amitcomp
 
 echo ""
-
-for i in {1..100}
-do
-    draw_bar $i
-    sleep 0.01
-done
-
-echo ""
 echo ""
 
 clear
 
-echo -e "${CYAN}╭──────────────────────────────────────────────╮${RESET}"
-echo -e "${CYAN}│${RESET}     ${BOLD}${GREEN}✓ INSTALLATION COMPLETE${RESET}         ${CYAN}│${RESET}"
-echo -e "${CYAN}╰──────────────────────────────────────────────╯${RESET}"
+header
 
 echo ""
+echo -e " ${WHITE}${BOLD}✓ INSTALLATION COMPLETED SUCCESSFULLY${RESET}"
+echo ""
+
 echo -e " ${WHITE}Command:${RESET} ${CYAN}amitcomp${RESET}"
+
 echo ""
 echo -e " ${GRAY}Run Anytime Using:${RESET}"
 echo -e " ${BLUE}└─>${RESET} amitcomp"
